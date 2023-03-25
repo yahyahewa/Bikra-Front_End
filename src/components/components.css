@@ -1,0 +1,19 @@
+@media (max-width: 776px) {
+  .nav-options {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    opacity: 0;
+    transition: all 0.5s ease;
+    flex-direction: column;
+  }
+  .nav-options.active {
+    background: #123;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+    align-content: center;
+  }
+}
