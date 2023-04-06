@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-// import "./components.css";
+import "./components.css";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import logo from "../assets/images/company.png";
-import cart from "../assets/images/cart-bascket.svg";
 
-const Navbar = () => {
+const Navbar = ({ showFilterButton }) => {
   const isDark = false;
   const [menubar, setMenuBar] = useState(false);
   function handleClick() {
@@ -17,20 +16,20 @@ const Navbar = () => {
     setSelectedOption(event.target.value);
   };
   return (
-    <nav className=" max-w-[1500px] w-full m-auto bg-big-stone-900 py-1">
+    <nav className="navarb max-w-[1500px] w-full m-auto py-1">
       <section className="flex justify-center gap-x-1 w-full">
         <Link to="/">
           <img src={logo} className={`w-[40px]`} />
         </Link>
         {/* start search bar */}
         <div
-          className={`rounded bg-[#fff] flex overflow-hidden w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%]`}
+          className={`rounded border flex overflow-hidden w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%]`}
         >
-          <select className={`outline-none w-fit text-center rounded-l `}>
-            <option>All</option>
-            <option>Computer</option>
-            <option>headfont</option>
-          </select>
+          <Button
+            type="button"
+            class={`font-semibold bg-azure-radiance-600 text-cus-white-50 px-2 ${showFilterButton} `}
+            text="Filter"
+          />
           <input
             className={`w-full border-l pl-2 outline-none `}
             type={`search`}
@@ -38,51 +37,51 @@ const Navbar = () => {
           />
           <i
             className="fa-solid fa-magnifying-glass flex items-center
-           scale-110 hover:scale-125 transition px-1 text-big-stone-900 mr-1"
+           scale-110 hover:scale-125 transition px-1 mr-1"
           ></i>
         </div>
         {/* end search bar */}
         {/* strat menu button */}
         <button
-          className=" text-big-stone-200 overflow-hidden"
+          className={`overflow-hidden ${menubar ? `rotate-[-90deg] ml-1` : ``}`}
           onClick={() => {
             handleClick();
           }}
         >
           <span
-            className={`bg-big-stone-100 h-[6px] w-8 mt-1 mb-[6px] block rounded-full transition-all  
-        ${menubar ? `rotate-[45deg]` : ``}`}
+            className={` h-[6px] w-8 mt-1 mb-[6px] bg-azure-radiance-600 block rounded-full transition-all  
+        ${menubar ? `rotate-[40deg]` : ``}`}
           ></span>
           <span
-            className={`bg-big-stone-100 h-[6px] w-8 mt-1 mb-[6px] block roun transition-all rounded-full 
-        ${menubar ? `hidden` : ``}`}
+            className={` h-[6px] mt-1 mb-[6px] bg-azure-radiance-600 block roun transition-all rounded-full 
+        ${menubar ? `w-[29px]` : ` w-8`}`}
           ></span>
           <span
-            className={`bg-big-stone-100 h-[6px] w-8 mt-1 mb-[6px] block rounded-full  transition-all 
-        ${menubar ? `rotate-[-45deg]` : ``}`}
+            className={` h-[6px] w-8 mt-1 mb-[6px] bg-azure-radiance-600 block rounded-full  transition-all 
+        ${menubar ? `rotate-[-40deg]` : ``}`}
           ></span>
         </button>
         {/* strat menu button */}
       </section>
       <article
-        className={`w-full flex flex-col items-center gap-y-1 pt-2 transition-all overflow-hidden 
-        ${menubar ? `h-auto` : `h-0`}`}
+        className={`w-full flex flex-col items-center gap-y-1 transition-all overflow-hidden 
+        ${menubar ? `h-auto ` : `h-0  `}`}
       >
         <Button
           type="button"
-          class={`bg-big-stone-200 text-big-stone-900 w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%] rounded
-          p-2 font-bold hover:bg-big-stone-300 transition md:text-lg md:p-1 md:py-2 ml-[6px]`}
+          class={` mt-2 bg-azure-radiance-600 text-cus-white-50 w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%] rounded
+          p-2 font-bold   md:text-lg md:p-1 md:py-2 ml-[6px] hover:bg-azure-radiance-700 transition-all`}
           text="Create a Free Website"
         />
         <Button
           type="button"
-          class={`text-big-stone-100 underline w-fit  rounded
-          py-1 px-2 font-bold capitalize`}
+          class={`underline w-fit rounded
+          py-1 px-2 font-bold capitalize text-slate-700`}
           text="login"
         />
-        <i class="fa-solid fa-cart-shopping fa-xl m-3 text-big-stone-100"></i>
+        <i className="fa-solid fa-cart-shopping fa-xl m-3"></i>
         <select
-          className={`ml-2 bg-transparent text-big-stone-50 rounded
+          className={`ml-2 bg-trans7arent rounded
              py-1 font-normal md:font-medium capitalize w-fit ltr outline-none`}
           onChange={handleChange}
         >
