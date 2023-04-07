@@ -75,10 +75,16 @@ const Navbar = ({ showFilterButton }) => {
         />
         <Button
           type="button"
-          class={`underline w-fit rounded
-          py-1 px-2 font-bold capitalize text-slate-700`}
+          class={`border  rounded  w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%]
+          py-1 px-2 font-bold capitalize text-slate-700 hover:bg-azure-radiance-100 ml-2`}
           text="login"
         />
+        <Link
+          to="/item"
+          className={`my-1 text-lg border-b border-azure-radiance-050 text-azure-radiance-900`}
+        >
+          Items
+        </Link>
         <i className="fa-solid fa-cart-shopping fa-xl m-3"></i>
         <select
           className={`ml-2 bg-trans7arent rounded
