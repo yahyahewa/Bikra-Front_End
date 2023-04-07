@@ -3,7 +3,7 @@ import { api } from "./api";
 const items = api.injectEndpoints({
   endpoints: (builder) => ({
     getAllItems: builder.query({
-      query: () => "/items",
+      query: () => "",
       providesTags: ["non_refrsh"],
     }),
   }),

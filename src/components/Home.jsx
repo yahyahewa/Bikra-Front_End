@@ -5,6 +5,7 @@ import ShopSlide from "./ShopSlide";
 import CategorySlide from "./CategorySlide";
 import ItemsPanel from "./ItemsPanel";
 import Filter from "./Filter";
+import SingleItem from "./SingleItem";
 function Home() {
   return (
     <div>

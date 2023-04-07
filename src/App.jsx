@@ -13,6 +13,7 @@ function App() {
     <div className="">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/singleitem/:id" element={<SingleItem />}></Route>
       </Routes>
     </div>
   );
