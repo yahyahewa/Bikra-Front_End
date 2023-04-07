@@ -8,7 +8,7 @@ function Items(props) {
       name: "cleaning",
       price: 34,
       discount: 0,
-      category: "home",
+      category: 4,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -27,7 +27,7 @@ function Items(props) {
       name: "hoodie",
       price: 34,
       discount: 10,
-      category: "clothes",
+      category: 1,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -46,7 +46,7 @@ function Items(props) {
       name: "nourish",
       price: 100,
       discount: 12,
-      category: "clothes",
+      category: 2,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -65,7 +65,7 @@ function Items(props) {
       name: "catridge",
       price: 55,
       discount: 13,
-      category: "beauty",
+      category: 2,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -84,7 +84,7 @@ function Items(props) {
       name: "black sofa",
       price: 1355,
       discount: 999,
-      category: "home",
+      category: 4,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -103,7 +103,7 @@ function Items(props) {
       name: "iphone 14plus",
       price: 999,
       discount: 0,
-      category: "electonic",
+      category: 3,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -122,7 +122,7 @@ function Items(props) {
       name: "mac",
       price: 2299,
       discount: 1999,
-      category: "electonic",
+      category: 3,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -141,7 +141,7 @@ function Items(props) {
       name: "rolex watch",
       price: 34,
       discount: 0,
-      category: "fashion",
+      category: 5,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -160,7 +160,7 @@ function Items(props) {
       name: "dress",
       price: 34,
       discount: 0,
-      category: "clothes",
+      category: 1,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -179,7 +179,7 @@ function Items(props) {
       name: "shooes",
       price: 34,
       discount: 0,
-      category: "fashion",
+      category: 1,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -198,7 +198,7 @@ function Items(props) {
       name: "polo shirt",
       price: 34,
       discount: 0,
-      category: "clothes",
+      category: 1,
       shop_id: 1,
       hashtag: ["clothes", "fashion"],
       number: 3,
@@ -223,65 +223,70 @@ function Items(props) {
       className="flex items flex-wrap sm:flex-row w-full  lg:w-[90%]
      items-start justify-evenly relative m-auto mt-10 pt-5 gap-[2px] max-w-[1500px]"
     >
-      <h1 className={props.class}>{props.text}</h1>
+      <Link to="/item">
+        <h1 className={props.class}>{props.text}</h1>
+      </Link>
       {items.map((value) => {
-        return (
-          <Link
-            key={value.id}
-            to={`/singleitem/${value.id}`}
-            className={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
+        if (value.id < 5) {
+          return (
+            <Link
+              key={value.id}
+              to={`/singleitem/${value.id}`}
+              className={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
             shadow-xl h-[350px] relative  mt-4 hover:mt-[10px] hover:shadow-2xl ease-out duration-300 `}
-          >
-            <article>
-              <img
-                className={`w-[90%] m-auto mt-2 h-[180px] object-contain`}
-                src={value.image[0]}
-              />
-              <div className={`h-auto max-h-[50px] overflow-hidden`}>
+            >
+              <article>
+                <img
+                  className={`w-[90%] m-auto mt-2 h-[180px] object-contain`}
+                  src={value.image[0]}
+                />
+                <div className={`h-auto max-h-[50px] overflow-hidden`}>
+                  <h1
+                    className={`text-center mt-2 text-azure-radiance-900 font-semibold capitalize`}
+                  >
+                    {value.name}
+                  </h1>
+                </div>
                 <h1
-                  className={`text-center mt-2 text-azure-radiance-900 font-semibold capitalize`}
+                  className={` text-center mt-2 font-extrabold text-azure-radiance-950`}
                 >
-                  {value.name}
-                </h1>
-              </div>
-              <h1
-                className={` text-center mt-2 font-extrabold text-azure-radiance-950`}
-              >
-                {value.discount > 0 ? (
-                  <span className={`flex flex-col gap-1`}>
-                    <span>
-                      Old Price
-                      <span className="line-through text-red-500 ml-1">
-                        {value.price}
+                  {value.discount > 0 ? (
+                    <span className={`flex flex-col gap-1`}>
+                      <span>
+                        Old Price
+                        <span className="line-through text-red-500 ml-1">
+                          {value.price}
+                        </span>
+                      </span>
+                      <span className={`font-bold capitalize text-green-500`}>
+                        discount %
+                        {discountPercent(value.discount / value.price)}
+                      </span>
+                      <span className="font-medium text-azure-radiance-950">
+                        New Price $ {value.discount}
                       </span>
                     </span>
-                    <span className={`font-bold capitalize text-green-500`}>
-                      discount %{discountPercent(value.discount / value.price)}
-                    </span>
-                    <span className="font-medium text-azure-radiance-950">
-                      New Price $ {value.discount}
-                    </span>
-                  </span>
-                ) : (
-                  <span className="">Price ${value.price}</span>
-                )}
-              </h1>
-              <div className={`flex justify-center text-yellow-400 mt-3`}>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star text-azure-radiance-950"></i>
-                <i className="fa-solid fa-star text-azure-radiance-950"></i>
-              </div>
-              <button
-                className={`absolute left-0 bottom-0 text-center w-[100%]
+                  ) : (
+                    <span className="">Price ${value.price}</span>
+                  )}
+                </h1>
+                <div className={`flex justify-center text-yellow-400 mt-3`}>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star text-azure-radiance-950"></i>
+                  <i className="fa-solid fa-star text-azure-radiance-950"></i>
+                </div>
+                <button
+                  className={`absolute left-0 bottom-0 text-center w-[100%]
                bg-azure-radiance-900 py-1 font-semibold text-lg capitalize text-white`}
-              >
-                show
-              </button>
-            </article>
-          </Link>
-        );
+                >
+                  show
+                </button>
+              </article>
+            </Link>
+          );
+        }
       })}
     </section>
   );

@@ -3,53 +3,43 @@ import "./components.css";
 function CategorySlide() {
   const category = [
     {
+      id: 1,
       name: "Fashion",
       image:
-        "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://as1.ftcdn.net/v2/jpg/02/66/11/50/1000_F_266115052_d3SVcKWO6LWrObPskrjpaM7tucWfF0vj.jpg",
     },
     {
-      name: "Fashion",
+      id: 2,
+      name: "Beauty",
       image:
-        "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://akns-images.eonline.com/eol_images/Entire_Site/2022122/rs_1024x759-220222125215-1024-e-comm-Nordstrom-Beauty-Bestsellers.jpg?fit=around%7C1024:759&output-quality=90&crop=1024:759;center,top",
     },
     {
-      name: "Fashion",
+      id: 3,
+      name: "Electronics",
       image:
-        "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://www.siliconindia.com/news/newsimages/Webp.net-resizeimage%20(18).jpg",
     },
     {
-      name: "FashionFashion ",
+      id: 4,
+      name: "Home",
       image:
-        "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
+        "https://simg.nicepng.com/png/small/423-4234218_trend-features-a-collection-of-painted-vintage-furniture.png",
     },
     {
-      name: "Fashion Fashion Fashion",
+      id: 5,
+      name: "Eksswarat",
       image:
-        "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
-    },
-    {
-      name: "Fashion",
-      image:
-        "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
-    },
-    {
-      name: "Fashion",
-      image:
-        "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    },
-    {
-      name: "Fashion",
-      image:
-        "https://images.pexels.com/photos/1486974/pexels-photo-1486974.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "https://eksswarat.yolasite.com/resources/10508303_1447955725463232_611729770_n.jpg",
     },
   ];
   return (
     <div className="mt-10 ">
       <section
-        className={`scroll w-[95%] bg-red-100 shadow-2xl m-auto max-w-[1500px] rounded-2xl`}
+        className={`scroll w-[95%]  shadow-2xl m-auto max-w-[1500px] rounded-2xl`}
       >
         <h1
-          className="border-b-[1px] px-1 p-yb-1 border-azure-radiance-900 text-sm md:text-base
+          className=" px-1 p-yb-1 border-azure-radiance-900 text-sm md:text-base
        text-azure-radiance-900 font-medium ml-2 mt-1 absolute"
         >
           Categories

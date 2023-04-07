@@ -54,14 +54,14 @@ html::-webkit-scrollbar-thumb {
 }
 
 .scroll::-webkit-scrollbar-track {
-  background: rgb(226, 226, 226);
+  background: rgb(255, 255, 255);
   border-radius: 20px;
-  margin: 50px;
+  margin: 0px;
 }
 
 .scroll::-webkit-scrollbar-thumb {
   background: #0764a7;
-  border-radius: 200px;
+  border-radius: 0px 0px 50px 50px;
 }
 /* ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttfffttttttttttt */
 .slider {

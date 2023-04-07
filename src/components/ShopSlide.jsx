@@ -2,112 +2,215 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./components.css";
 function ShopSlide() {
-  const pathImg =
-    "https://media.thebodyshop.com/i/thebodyshop/Bond-Street-Station-1272x1272?$amplience-ct1-xs-img1$&wid=1900&hei=900&zoom=0.25&pcrop={($this.metadata.pointOfInterest.x*100%)-((($wid/$zoom)/2)-(($this.metadata.pointOfInterest.w/2)*100%))},{($this.metadata.pointOfInterest.y*100%)-((($hei/$zoom)/2)-(($this.metadata.pointOfInterest.h/2)*100%))},{$wid/$zoom},{$hei/$zoom}&w=$wid&h=$hei&sm=c&fmt=auto";
   const items = [
     {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 1,
+      name: "cleaning",
+      price: 34,
+      discount: 0,
+      category: 4,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://p1.hiclipart.com/preview/205/943/762/kitchen-cleaning-cleaning-agent-colorado-floor-cleaning-chemical-industry-cleaner-home-png-clipart.jpg",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 2,
+      name: "hoodie",
+      price: 34,
+      discount: 10,
+      category: 1,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://png.pngtree.com/png-vector/20211020/ourmid/pngtree-hoodie-jumper-jacket-mockup-png-image_3992024.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 3,
+      name: "nourish",
+      price: 100,
+      discount: 12,
+      category: 2,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://img.lovepik.com/free-png/20211225/lovepik-skin-care-products-png-image_400420780_wh300.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 0, 1, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 4,
+      name: "catridge",
+      price: 55,
+      discount: 13,
+      category: 2,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://img.lovepik.com/free-png/20211225/lovepik-skin-care-products-png-image_400420711_wh300.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 5, 5, 5],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 5,
+      name: "black sofa",
+      price: 1355,
+      discount: 999,
+      category: 4,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://img.lovepik.com/free-png/20220108/lovepik-furniture-photography-png-image_401264624_wh300.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2, 3, 3, 3],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 6,
+      name: "iphone 14plus",
+      price: 999,
+      discount: 0,
+      category: 3,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://lookagain.scene7.com/is/image/OttoUK/170w/iPhone-14-Plus-128GB-Blue-by-Apple~33J630FRSP.jpg",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2, 5, 5, 4, 4],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 7,
+      name: "mac",
+      price: 2299,
+      discount: 1999,
+      category: 3,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://w7.pngwing.com/pngs/87/717/png-transparent-apple-mac-apple-product-design-products-of-modern-technology-large-size-tablet-smart-device-product-kind-apple-iphone.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 8,
+      name: "rolex watch",
+      price: 34,
+      discount: 0,
+      category: 5,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://icon2.cleanpng.com/20171220/hsq/wristwatch-png-image-5a3a436f1921d2.247892471513767791103.jpg",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 9,
+      name: "dress",
+      price: 34,
+      discount: 0,
+      category: 1,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://w7.pngwing.com/pngs/978/410/png-transparent-wedding-dress-clothing-gown-gown-fashion-vintage-clothing-woman-thumbnail.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 10,
+      name: "shooes",
+      price: 34,
+      discount: 0,
+      category: 1,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://image.similarpng.com/very-thumbnail/2022/02/Woman-fashion-shoes-high-heels-on-transparent-background-PNG.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
     {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1566438480900-0609be27a4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80",
-      name: "siver fashion collection",
-      price: "1000$",
-    },
-    {
-      image: pathImg,
-      name: "siver fashion collection",
-      price: "1000$",
+      id: 11,
+      name: "polo shirt",
+      price: 34,
+      discount: 0,
+      category: 1,
+      shop_id: 1,
+      hashtag: ["clothes", "fashion"],
+      number: 3,
+      image: [
+        "https://www.pngfind.com/pngs/m/55-552313_polo-shirt-png-image-men-polo-shirts-png.png",
+        "",
+      ],
+      date: "6/4/2023",
+      time: "11:59 pm",
+      rating: [1, 5, 3, 4, 2],
+      discription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
     },
   ];
 
@@ -167,22 +270,22 @@ function ShopSlide() {
     const endIndex = startIndex + itemsPerSlide;
     const slideItems = items.slice(startIndex, endIndex);
 
-    return slideItems.map((item, index) => (
-      <Link to="#" key={index}>
+    return slideItems.map((value) => (
+      <Link to={`/singleitem/${value.id}`} key={value.id}>
         <div
-          key={index}
+          key={value.id}
           className={`overflow-hidden
           w-[120px] h-[170px]  p-1 `}
         >
           <img
-            src={item.image}
+            src={value.image[0]}
             className={`w-[110px]
-             shadow-lg h-[110px] m-auto overflow-hidden rounded-full object-cover hover:scale-105 hover:shadow-2xl hover:shadow-yellow-200 ease-in-out duration-300 `}
+             shadow-lg h-[110px] m-auto overflow-hidden rounded-full object-cover hover:scale-105 ease-in-out duration-300 `}
           />
           <p
             className={`text-sm text-slate-800 m-[2px] text-center font-medium`}
           >
-            {item.name}
+            {value.name}
           </p>
         </div>
       </Link>

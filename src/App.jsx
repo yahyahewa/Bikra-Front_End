@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/singleitem/:id" element={<SingleItem />}></Route>
+        <Route path="/item" element={<ItemPage />}></Route>
       </Routes>
     </div>
   );
