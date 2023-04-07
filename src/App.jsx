@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/singleitem/:id" element={<SingleItem />}></Route>
         <Route path="/item" element={<ItemPage />}></Route>
+        <Route path="/item/:categorey" element={<ItemPage />}></Route>
       </Routes>
     </div>
   );

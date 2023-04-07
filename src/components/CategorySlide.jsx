@@ -1,5 +1,6 @@
 import React from "react";
 import "./components.css";
+import { Link } from "react-router-dom";
 function CategorySlide() {
   const category = [
     {
@@ -44,10 +45,11 @@ function CategorySlide() {
         >
           Categories
         </h1>
-        {category.map((value, index) => {
+        {category.map((value) => {
           return (
-            <article
-              key={index}
+            <Link
+              to={`/item/${value.id}`}
+              key={value.id}
               className={` inline-block mt-7 mx-3 md:mx-5
               rounded-xl shadow-xl overflow-hidden 
               mb-3 bg-cus-white-50 w-[120px] h-[190px] sm:w-[140px] sm:h-[210px]
@@ -70,7 +72,7 @@ function CategorySlide() {
                   Shop now
                 </h1>
               </div>
-            </article>
+            </Link>
           );
         })}
       </section>

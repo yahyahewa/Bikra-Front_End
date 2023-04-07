@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 
 function ItemPage() {
   const { categorey } = useParams();
-  console.log(categorey);
   const items = [
     {
       id: 1,
@@ -247,7 +246,7 @@ function ItemPage() {
         </aside>
         {/* -------------------------items------------------------------- */}
         <section
-          className={`flex flex-wrap gap-3 w-fit justify-evenly border shadow-2xl rounded-xl sm:mr-3`}
+          className={`flex flex-wrap gap-3 w-full justify-evenly border shadow-2xl rounded-xl sm:mr-3`}
         >
           {items.map((value) => {
             if (!categorey) {
