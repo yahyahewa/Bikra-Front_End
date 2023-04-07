@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MainNavbar from "./MainNavbar";
 import { useParams } from "react-router-dom";
+import Footer from "./Footer";
 function SingleItem() {
   const items = [
     {
@@ -305,6 +306,7 @@ function SingleItem() {
             );
         })}
       </section>
+      <Footer />
     </main>
   );
 }

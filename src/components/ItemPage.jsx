@@ -3,6 +3,7 @@ import Filter from "./Filter";
 import Navbar from "./MainNavbar";
 import "./components.css";
 import { Link, useParams } from "react-router-dom";
+import Footer from "./Footer";
 
 function ItemPage() {
   const { categorey } = useParams();
@@ -377,6 +378,8 @@ function ItemPage() {
           })}
         </section>
       </section>
+
+      <Footer />
     </div>
   );
 }
