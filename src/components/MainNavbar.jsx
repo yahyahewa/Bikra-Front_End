@@ -1,109 +1,169 @@
-import React, { useState } from "react";
-import "./components.css";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import Button from "./Button";
-import logo from "../assets/images/company.png";
-
-const Navbar = ({ showFilterButton }) => {
-  const isDark = false;
-  const [menubar, setMenuBar] = useState(false);
-  function handleClick() {
-    if (!menubar) setMenuBar(true);
-    else setMenuBar(false);
+import cart from "../assets/images/wicker (2).png";
+import cartDark from "../assets/images/wicker.png";
+import { useSelector, useDispatch } from "react-redux";
+import { dark, light } from "../Slice/themeSlice";
+import "./components.css";
+import Li_nk from "./Li_nk";
+function Test() {
+  const isDark = useSelector((state) => state.theme.value);
+  const [isOpen, setISOpen] = useState(false);
+  const dispatch = useDispatch();
+  function handlClick() {
+    if (!isDark) {
+      dispatch(dark());
+    } else {
+      dispatch(light());
+    }
   }
+  const myDivRef = useRef(null);
+  const textColor = "text-oasis-50";
 
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  function handleNextSlideClick() {
+    console.log(myDivRef.current.scrollLeft);
+    myDivRef.current.scrollLeft += 50;
+  }
+  function handlePrevSlideClick() {
+    myDivRef.current.scrollLeft -= 50;
+  }
+  // bg-[#010113] dark blue {dark mode}
   return (
-    <nav className="navarb max-w-[1500px] w-full m-auto py-1">
-      <section className="flex justify-center gap-x-1 w-full">
-        <Link to="/">
-          <img src={logo} className={`w-[40px]`} />
-        </Link>
-        {/* start search bar */}
+    <nav className={`mb-[50px] ${isDark ? `bg-oasis-950` : ``}`}>
+      <div className={`flex justify-center items-center p-2 gap-x-2 relative`}>
         <div
-          className={`rounded border flex overflow-hidden w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%]`}
+          className={`flex items-center gap-x-2 overflow-hidden w-[90%] lg:w-[40%]`}
         >
-          <Button
-            type="button"
-            class={`font-semibold bg-azure-radiance-600 text-cus-white-50 px-2 ${showFilterButton} `}
-            text="Filter"
-          />
-          <input
-            className={`w-full border-l pl-2 outline-none `}
-            type={`search`}
-            placeholder="Search Bikra ..."
-          />
-          <i
-            className="fa-solid fa-magnifying-glass flex items-center
-           scale-110 hover:scale-125 transition px-1 mr-1"
-          ></i>
+          <Link
+            to={`/`}
+            className={`text-[2rem] font-semibold pb-[2px] ${
+              isDark ? textColor : ` text-oasis-600`
+            } `}
+          >
+            Bikra
+          </Link>
+          <div
+            className={`border-[2px] overflow-hidden rounded-[2rem] flex 
+          justify-center items-center bg-oasis-50 border-oasis-950 w-[100%] h-[2.5rem] lg:h-[3rem]
+          `}
+          >
+            <input
+              type="search"
+              className={`h-full outline-none w-full p-[2px] px-3 bg-transparent`}
+              placeholder="Search Bikra"
+            />
+            <button
+              className={`h-full px-4 hover:bg-orange-200 ease-in-out duration-300`}
+            >
+              <i className="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+          </div>
         </div>
-        {/* end search bar */}
-        {/* strat menu button */}
+        <div
+          className={`flex absolute flex-col top-0 ${
+            isDark ? ` bg-oasis-950` : ` bg-oasis-100`
+          } lg:bg-transparent w-full h-screen 
+          justify-start gap-y-4
+        lg:h-auto lg:w-auto lg:flex-row lg:relative lg:left-0 lg:justify-center 
+          items-center overflow-hidden gap-x-2 z-30 ease-in-out duration-500 transition-all
+        ${isOpen ? `left-0` : ` left-[-100%]`}`}
+        >
+          <button
+            onClick={() => {
+              isOpen ? setISOpen(false) : setISOpen(true);
+            }}
+            className={`lg:hidden absolute rounded-full right-6 top-6 
+          ease-in-out duration-500 ${isDark ? `text-oasis-50` : ` `} ${
+              isOpen ? `rotate-360` : `rotate-0`
+            }`}
+          >
+            <i className="fa-regular fa-circle-xmark fa-2xl "></i>
+          </button>
+          <h1
+            className={`rounded-[3rem] h-[3rem] border-[2px]  
+             overflow-hidden items-center flex px-4 mt-4 lg:mt-0
+           text-oasis-950 font-semibold hover:bg-oasis-400 ease-in-out duration-300
+           ${
+             isDark
+               ? `border-oasis-100 bg-oasis-200`
+               : `border-oasis-800 bg-oasis-300`
+           }`}
+          >
+            <Link to={`/`}>Creat a Website</Link>
+          </h1>
+          <h1
+            className={`rounded-[3rem] border-[2px] border-oasis-800 h-[3rem] overflow-hidden items-center flex px-4
+           text-black font-semibold ease-in-out duration-300
+             ${
+               isDark
+                 ? ` border-oasis-100 ${textColor}  `
+                 : ` hover:bg-oasis-100`
+             }`}
+          >
+            <Link to={`/`}>Login</Link>
+          </h1>
+          <h1
+            className={`rounded-[3rem] border-oasis-800 h-[3rem] overflow-hidden items-center flex px-4
+           text-black font-semibold  ease-in-out duration-300
+            ${isDark ? textColor : `hover:bg-oasis-100`}`}
+          >
+            <Link to={`/`}>About</Link>
+          </h1>
+          <Link
+            to={`/`}
+            className={`h-[3rem] w-[3rem] flex items-center justify-center rounded-full 
+           ease-in-out duration-300 ${
+             isDark ? textColor : `hover:bg-orange-100`
+           }`}
+          >
+            <i className={`fa-regular fa-heart fa-xl `}></i>
+          </Link>
+          <Li_nk
+            url={`/cart`}
+            cssStyle={`h-[3rem] w-[3rem] flex items-center justify-center rounded-full
+           ease-in-out duration-300 pb-[2px] ${
+             isDark ? `` : `hover:bg-orange-100 `
+           }`}
+            content={
+              <img
+                src={isDark ? cartDark : cart}
+                className={`w-[55%] h-[55%]`}
+              />
+            }
+            isScrollTop={"false"}
+          />
+          <button
+            onClick={() => {
+              handlClick();
+            }}
+            className={`rounded-[3rem]  h-[2.5rem] overflow-hidden items-center flex px-4
+           text-black font-semibold w-[1rem] justify-center ease-in-out duration-300 border-b-[1rem] ${
+             isDark
+               ? ` border-oasis-800 bg-oasis-100`
+               : `  hover:bg-oasis-100 border-oasis-500 `
+           }`}
+          >
+            {isDark ? (
+              <i className=" fa-regular shadow-2xl fa-moon rotate-9 ease-in-out duration-1000"></i>
+            ) : (
+              <i className="fa-sharp  fa-regular fa-spin  fa-sun rotate-[360deg] ease-in-out duration-1000"></i>
+            )}
+          </button>
+        </div>
         <button
-          className={`overflow-hidden ${menubar ? `rotate-[-90deg] ml-1` : ``}`}
           onClick={() => {
-            handleClick();
+            isOpen ? setISOpen(false) : setISOpen(true);
           }}
+          className={`lg:hidden 
+          ease-in-out duration-500 ${
+            isDark ? `text-orange-50` : `text-oasis-950`
+          } ${isOpen ? `rotate-360` : `rotate-0`}`}
         >
-          <span
-            className={` h-[6px] w-8 mt-1 mb-[6px] bg-azure-radiance-600 block rounded-full transition-all  
-        ${menubar ? `rotate-[40deg]` : ``}`}
-          ></span>
-          <span
-            className={` h-[6px] mt-1 mb-[6px] bg-azure-radiance-600 block roun transition-all rounded-full 
-        ${menubar ? `w-[29px]` : ` w-8`}`}
-          ></span>
-          <span
-            className={` h-[6px] w-8 mt-1 mb-[6px] bg-azure-radiance-600 block rounded-full  transition-all 
-        ${menubar ? `rotate-[-40deg]` : ``}`}
-          ></span>
+          <i className="fa-solid fa-bars fa-2xl"></i>
         </button>
-        {/* strat menu button */}
-      </section>
-      <article
-        className={`w-full flex flex-col items-center gap-y-1 transition-all overflow-hidden 
-        ${menubar ? `h-auto ` : `h-0  `}`}
-      >
-        <Button
-          type="button"
-          class={` mt-2 bg-azure-radiance-600 text-cus-white-50 w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%] rounded
-          p-2 font-bold   md:text-lg md:p-1 md:py-2 ml-[6px] hover:bg-azure-radiance-700 transition-all`}
-          text="Create a Free Website"
-        />
-        <Button
-          type="button"
-          class={`border  rounded  w-[75%] sm:w-[60%] md:w-[50%] lg:w-[40%]
-          py-1 px-2 font-bold capitalize text-slate-700 hover:bg-azure-radiance-100 ml-2`}
-          text="login"
-        />
-        <Link
-          to="/item"
-          className={`my-1 text-lg border-b border-azure-radiance-050 text-azure-radiance-900`}
-        >
-          Items
-        </Link>
-        <i className="fa-solid fa-cart-shopping fa-xl m-3"></i>
-        <select
-          className={`ml-2 bg-trans7arent rounded
-             py-1 font-normal md:font-medium capitalize w-fit ltr outline-none`}
-          onChange={handleChange}
-        >
-          <option className="text-big-stone-900 w-fit ltr" value="option1">
-            English
-          </option>
-          <option className="text-big-stone-900 w-fit ltr" value="option2">
-            کوردی
-          </option>
-          <option className="text-big-stone-900 w-fit ltr" value="option3">
-            عربی
-          </option>
-        </select>
-      </article>
+      </div>
     </nav>
   );
-};
+}
 
-export default Navbar;
+export default Test;
