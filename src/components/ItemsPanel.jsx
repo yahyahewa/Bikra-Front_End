@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./components.css";
+import Li_nk from "./Li_nk";
 function Items(props) {
   const items = [
     {
@@ -229,62 +230,64 @@ function Items(props) {
       {items.map((value) => {
         if (value.id < 5) {
           return (
-            <Link
+            <Li_nk
+              isScrollTop={true}
               key={value.id}
-              to={`/singleitem/${value.id}`}
-              className={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
+              url={`/singleitem/${value.id}`}
+              cssStyle={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
             shadow-xl h-[350px] relative  mt-4 hover:mt-[10px] hover:shadow-2xl ease-out duration-300 `}
-            >
-              <article>
-                <img
-                  className={`w-[90%] m-auto mt-2 h-[180px] object-contain`}
-                  src={value.image[0]}
-                />
-                <div className={`h-auto max-h-[50px] overflow-hidden`}>
+              content={
+                <article className="bg-cus-white-50">
+                  <img
+                    className={`w-[90%] m-auto mt-2 h-[180px] object-contain `}
+                    src={value.image[0]}
+                  />
+                  <div className={`h-auto max-h-[50px] overflow-hidden`}>
+                    <h1
+                      className={`text-center mt-2 text-azure-radiance-900 font-semibold capitalize`}
+                    >
+                      {value.name}
+                    </h1>
+                  </div>
                   <h1
-                    className={`text-center mt-2 text-azure-radiance-900 font-semibold capitalize`}
+                    className={` text-center mt-2 font-extrabold text-azure-radiance-950`}
                   >
-                    {value.name}
-                  </h1>
-                </div>
-                <h1
-                  className={` text-center mt-2 font-extrabold text-azure-radiance-950`}
-                >
-                  {value.discount > 0 ? (
-                    <span className={`flex flex-col gap-1`}>
-                      <span>
-                        Old Price
-                        <span className="line-through text-red-500 ml-1">
-                          {value.price}
+                    {value.discount > 0 ? (
+                      <span className={`flex flex-col gap-1`}>
+                        <span>
+                          Old Price
+                          <span className="line-through text-red-500 ml-1">
+                            {value.price}
+                          </span>
+                        </span>
+                        <span className={`font-bold capitalize text-green-500`}>
+                          discount %
+                          {discountPercent(value.discount / value.price)}
+                        </span>
+                        <span className="font-medium text-azure-radiance-950">
+                          New Price $ {value.discount}
                         </span>
                       </span>
-                      <span className={`font-bold capitalize text-green-500`}>
-                        discount %
-                        {discountPercent(value.discount / value.price)}
-                      </span>
-                      <span className="font-medium text-azure-radiance-950">
-                        New Price $ {value.discount}
-                      </span>
-                    </span>
-                  ) : (
-                    <span className="">Price ${value.price}</span>
-                  )}
-                </h1>
-                <div className={`flex justify-center text-yellow-400 mt-3`}>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star text-azure-radiance-950"></i>
-                  <i className="fa-solid fa-star text-azure-radiance-950"></i>
-                </div>
-                <button
-                  className={`absolute left-0 bottom-0 text-center w-[100%]
+                    ) : (
+                      <span className="">Price ${value.price}</span>
+                    )}
+                  </h1>
+                  <div className={`flex justify-center text-yellow-400 mt-3`}>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star"></i>
+                    <i className="fa-solid fa-star text-azure-radiance-950"></i>
+                    <i className="fa-solid fa-star text-azure-radiance-950"></i>
+                  </div>
+                  <button
+                    className={`absolute left-0 bottom-0 text-center w-[100%]
                bg-azure-radiance-900 py-1 font-semibold text-lg capitalize text-white`}
-                >
-                  show
-                </button>
-              </article>
-            </Link>
+                  >
+                    show
+                  </button>
+                </article>
+              }
+            ></Li_nk>
           );
         }
       })}

@@ -11,7 +11,7 @@ function Footer() {
         <article className={`w-[95%] m-auto mt-3 sm:w-[23%] text-cus-white-50`}>
           <button
             className={`font-bold rounded-2xl hover:bg-slate-500 sm:hover:bg-transparent
-             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 p-2 items-center`}
+             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 py-2 px-3 items-center`}
           >
             <h1>Shop</h1>
             <i
@@ -32,7 +32,7 @@ function Footer() {
         <article className={`w-[95%] m-auto mt-3 sm:w-[23%] text-cus-white-50`}>
           <button
             className={`font-bold rounded-2xl hover:bg-slate-500 sm:hover:bg-transparent
-             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 p-2 items-center`}
+             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 py-2 px-3 items-center`}
           >
             <h1>Sell</h1>
             <i
@@ -52,7 +52,7 @@ function Footer() {
         <article className={`w-[95%] m-auto mt-3 sm:w-[23%] text-cus-white-50`}>
           <button
             className={`font-bold rounded-2xl hover:bg-slate-500 sm:hover:bg-transparent
-             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 p-2 items-center`}
+             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 py-2 px-3 items-center`}
           >
             <h1> About</h1>
             <i
@@ -75,7 +75,7 @@ function Footer() {
         <article className={`w-[95%] m-auto mt-3 sm:w-[23%] text-cus-white-50`}>
           <button
             className={`font-bold rounded-2xl hover:bg-slate-500 sm:hover:bg-transparent
-             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 p-2 items-center`}
+             transition-all w-full flex justify-between sm:justify-start sm:gap-x-2 py-2 px-3 items-center`}
           >
             <h1>Help</h1>
             <i
@@ -104,8 +104,8 @@ function Footer() {
         className={`w-full bg-big-stone-900 p-2 flex justify-center items-center text-cus-white-50`}
       >
         <h1>
-          <i class="fa-solid mx-3 fa-earth-americas fa-2xs"> Iraq</i>
-          <i class="fa-solid mx-3 fa-copyright fa-xs"> 2023 Bikra, Inc</i>
+          <i className="fa-solid mx-3 fa-earth-americas fa-2xs"> Iraq</i>
+          <i className="fa-solid mx-3 fa-copyright fa-xs"> 2023 Bikra, Inc</i>
         </h1>
       </article>
     </footer>

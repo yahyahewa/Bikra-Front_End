@@ -7,15 +7,23 @@ import "./App.css";
 import Home from "./components/Home.jsx";
 import ItemPage from "./components/ItemPage";
 import SingleItem from "./components/SingleItem";
+import AddtoCart from "./components/Cart";
+import Login from "./components/Login";
+import CreateWebsite from "./components/CreateWebsite";
 //--//-----------//--//
 function App() {
   return (
     <div className="">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/main#CreateWebs" element={<Home />} />
         <Route path="/singleitem/:id" element={<SingleItem />}></Route>
         <Route path="/item" element={<ItemPage />}></Route>
+        <Route path="/signup" element={<CreateWebsite />}></Route>
         <Route path="/item/:categorey" element={<ItemPage />}></Route>
+        <Route path="/cart/" element={<AddtoCart />}></Route>
+        <Route path="/item/:categorey" element={<ItemPage />}></Route>
+        <Route path="/login/:username" element={<Login />}></Route>
       </Routes>
     </div>
   );

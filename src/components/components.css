@@ -29,6 +29,42 @@ body {
 /* ////////////////////////////////////////// */
 
 /* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+.cute-slide-show {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.slide-item {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.slide-item:last-of-type {
+  margin-right: 0;
+}
+
+.slide-item img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 10px;
+}
+
+.slide-item .title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.slide-item .description {
+  font-size: 14px;
+  color: #999;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
 .scroll {
   margin: 4px, 4px;
   padding: 4px;
@@ -112,4 +148,27 @@ input[type="range"]:focus {
 input[type="range"]:focus::-webkit-slider-runnable-track {
   background: #ccc;
 }
-/* -------------------- itams  page-------------------------- */
+/* -------------------- slow underline ------------------------- */
+
+.slow-underline {
+  color: #eee;
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+.slow-underline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #0e0d0d;
+  transition: width 0.5s;
+}
+.dark::before {
+  background-color: #fdebd2;
+}
+.slow-underline:hover::before {
+  width: 200%;
+}
