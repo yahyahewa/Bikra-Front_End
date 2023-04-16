@@ -36,7 +36,7 @@ function Test() {
           <Li_nk
             url="/"
             cssStyle={`text-[2rem] font-semibold pb-[2px] font-serif ${
-              isDark ? textColor : ` text-jaguar-500`
+              isDark ? textColor : ` text-red-300`
             } `}
             content={"Bikra"}
           />
@@ -85,7 +85,7 @@ function Test() {
              isDark ? `bg-jaguar-400  text-white` : `bg-jaguar-400  text-white`
            }`}
           >
-            <Link to={`/signup`}>Sign up</Link>
+            <Link to={`/signup`}>Create a Website</Link>
           </h1>
           <h1
             className={`rounded-[3rem] border-[2px]  h-[3rem] overflow-hidden items-center flex px-4
