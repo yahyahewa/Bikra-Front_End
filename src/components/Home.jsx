@@ -6,8 +6,7 @@ import CategorySlide from "./CategorySlide";
 import ItemsPanel from "./ItemsPanel";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
-import PanelFake from "./PanelFake";
-import CreateWebsite from "./CreateWebsite";
+import Account from "./account/Account";
 function Home() {
   const isDark = useSelector((state) => state.theme.value);
   return (
@@ -17,7 +16,8 @@ function Home() {
       }  ease-in-out duration-150`}
     >
       <MainNavbar />
-      {/* <ShopSlide /> */}
+      <ShopSlide />
+      {/* <Account /> */}
       <ItemsPanel
         text={`Items`}
         class={`absolute left-1 text-lg font-semibold border-b text-azure-radiance-800 border-azure-radiance-800`}
