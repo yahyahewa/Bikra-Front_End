@@ -3,14 +3,12 @@ import MainNavbr from "./MainNavbar";
 import image from "../assets/images/login.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../Slice/userslice";
-import Button from "./Button";
+import { Link } from "react-router-dom";
 function Login() {
   const [showPass, setShowPass] = useState(false);
+  const [emial, SetEmail] = useState();
   const isLogin = useSelector((state) => state.user.value);
   const dispatch = useDispatch();
-  function handlClick() {
-    isLogin ? dispatch(logout()) : dispatch(login());
-  }
   return (
     <section>
       <MainNavbr />
@@ -32,6 +30,9 @@ function Login() {
               className={`border w-full h-[3rem] overflow-hidden rounded-[3rem] border-gray-300`}
             >
               <input
+                onKeyUp={(e) => {
+                  SetEmail(e.target.value);
+                }}
                 type={`email`}
                 className={`w-full pl-3 p-[2px] h-full outline-none`}
                 placeholder="emailexample@example.com"
@@ -63,14 +64,15 @@ function Login() {
             </div>
           </div>
           <div className={`w-full mt-6`}>
-            <Button
-              type="button"
-              content="Login"
-              cssStyle={`w-full border-none  h-[3rem] bg-jaguar-400 font-semibold rounded-[3rem]
-                 text-jaguar-50 hover:bg-jaguar-500 ease-in-out duration-300
-                  hover:scale-[0.99] hover:shadow-lg`}
-              onClick={handlClick}
-            />
+            <Link
+              to={`/account`}
+              className={`w-full border-none block h-[3rem] bg-jaguar-400 
+              font-semibold rounded-[3rem] text-jaguar-50 hover:bg-jaguar-500 
+              ease-in-out duration-300 text-center pt-[10px]
+                  hover:scale-[0.99] hover:shadow-lg `}
+            >
+              Login
+            </Link>
           </div>
         </article>
       </section>
