@@ -2,295 +2,106 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./components.css";
 import Li_nk from "./Li_nk";
+import Rating from "./Rating";
+import { useGetSomeItemForHomeQuery } from "../app/api/productEndPoint";
 function Items(props) {
-  const items = [
-    {
-      id: 1,
-      name: "cleaning",
-      price: 34,
-      discount: 0,
-      category: 4,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://p1.hiclipart.com/preview/205/943/762/kitchen-cleaning-cleaning-agent-colorado-floor-cleaning-chemical-industry-cleaner-home-png-clipart.jpg",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 2,
-      name: "hoodie",
-      price: 34,
-      discount: 10,
-      category: 1,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://png.pngtree.com/png-vector/20211020/ourmid/pngtree-hoodie-jumper-jacket-mockup-png-image_3992024.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 3,
-      name: "nourish",
-      price: 100,
-      discount: 12,
-      category: 2,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://img.lovepik.com/free-png/20211225/lovepik-skin-care-products-png-image_400420780_wh300.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 0, 1, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 4,
-      name: "catridge",
-      price: 55,
-      discount: 13,
-      category: 2,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://img.lovepik.com/free-png/20211225/lovepik-skin-care-products-png-image_400420711_wh300.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 5, 5, 5],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 5,
-      name: "black sofa",
-      price: 1355,
-      discount: 999,
-      category: 4,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://img.lovepik.com/free-png/20220108/lovepik-furniture-photography-png-image_401264624_wh300.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2, 3, 3, 3],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 6,
-      name: "iphone 14plus",
-      price: 999,
-      discount: 0,
-      category: 3,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://lookagain.scene7.com/is/image/OttoUK/170w/iPhone-14-Plus-128GB-Blue-by-Apple~33J630FRSP.jpg",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2, 5, 5, 4, 4],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 7,
-      name: "mac",
-      price: 2299,
-      discount: 1999,
-      category: 3,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://w7.pngwing.com/pngs/87/717/png-transparent-apple-mac-apple-product-design-products-of-modern-technology-large-size-tablet-smart-device-product-kind-apple-iphone.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 8,
-      name: "rolex watch",
-      price: 34,
-      discount: 0,
-      category: 5,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://icon2.cleanpng.com/20171220/hsq/wristwatch-png-image-5a3a436f1921d2.247892471513767791103.jpg",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 9,
-      name: "dress",
-      price: 34,
-      discount: 0,
-      category: 1,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://w7.pngwing.com/pngs/978/410/png-transparent-wedding-dress-clothing-gown-gown-fashion-vintage-clothing-woman-thumbnail.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 10,
-      name: "shooes",
-      price: 34,
-      discount: 0,
-      category: 1,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://image.similarpng.com/very-thumbnail/2022/02/Woman-fashion-shoes-high-heels-on-transparent-background-PNG.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-    {
-      id: 11,
-      name: "polo shirt",
-      price: 34,
-      discount: 0,
-      category: 1,
-      shop_id: 1,
-      hashtag: ["clothes", "fashion"],
-      number: 3,
-      image: [
-        "https://www.pngfind.com/pngs/m/55-552313_polo-shirt-png-image-men-polo-shirts-png.png",
-        "",
-      ],
-      date: "6/4/2023",
-      time: "11:59 pm",
-      rating: [1, 5, 3, 4, 2],
-      discription:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus inventore quas, impedit quibusdam eum reprehenderit dolorum vitae architecto, dicta a quaerat nisi. Molestias maxime facere dolores maiores dicta tenetur impedit?",
-    },
-  ];
+  const { data, isLoading, isError } = useGetSomeItemForHomeQuery();
 
   function discountPercent(value) {
     value = String(100 - value * 100);
     return value.slice(0, 2);
   }
   return (
-    <section
-      className="flex items flex-wrap sm:flex-row w-full  lg:w-[90%]
-     items-start justify-evenly relative m-auto mt-10 pt-5 gap-[2px] max-w-[1500px]"
-    >
+    <section>
       <Link to="/item">
-        <h1 className={props.class}>{props.text}</h1>
+        <h1 className={`ml-5 text-lg text-jaguar-500 underline`}>
+          {props.text}
+        </h1>
       </Link>
-      {items.map((value) => {
-        if (value.id < 5) {
-          return (
-            <Li_nk
-              isScrollTop={true}
-              key={value.id}
-              url={`/singleitem/${value.id}`}
-              cssStyle={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
-            shadow-xl h-[350px] relative  mt-4 hover:mt-[10px] hover:shadow-2xl ease-out duration-300 `}
-              content={
-                <article className="bg-cus-white-50">
-                  <img
-                    className={`w-[90%] m-auto mt-2 h-[180px] object-contain `}
-                    src={value.image[0]}
-                  />
-                  <div className={`h-auto max-h-[50px] overflow-hidden`}>
-                    <h1
-                      className={`text-center mt-2 text-azure-radiance-900 font-semibold capitalize`}
-                    >
-                      {value.name}
-                    </h1>
-                  </div>
-                  <h1
-                    className={` text-center mt-2 font-extrabold text-azure-radiance-950`}
-                  >
-                    {value.discount > 0 ? (
-                      <span className={`flex flex-col gap-1`}>
-                        <span>
-                          Old Price
-                          <span className="line-through text-red-500 ml-1">
-                            {value.price}
+      <section
+        className="flex items flex-wrap sm:flex-row w-full  lg:w-[90%]
+     items-start justify-evenly relative m-auto   gap-[2px] max-w-[1500px]"
+      >
+        {isError
+          ? ``
+          : isLoading
+          ? ``
+          : data.map((value) => {
+              return (
+                <Li_nk
+                  isScrollTop={true}
+                  key={value.id}
+                  url={`/singleitem/${value.id}`}
+                  cssStyle={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
+            h-[330px] relative  mt-4 hover:mt-[10px] hover:shadow-xl ease-out duration-300 `}
+                  content={
+                    <article className="bg-cus-white-50">
+                      <div
+                        className={`w-[100%] m-auto mt-2 h-[180px]
+                      rounded-t-md overflow-hidden relative`}
+                      >
+                        <img
+                          className={`w-full h-full object-cover`}
+                          src={value.image}
+                        />
+
+                        <span
+                          className={`absolute bottom-1 left-1
+                           ml-2 mr-1 capitalize bg-green-500 text-white font-semibold px-2 rounded-md`}
+                        >
+                          %{discountPercent(value.discount / value.price)}
+                        </span>
+                      </div>
+                      <div
+                        className={`h-auto w-full max-h-[50px] overflow-hidden`}
+                      >
+                        <h1
+                          className={`text-left ml-2 mt-2 text-azure-radiance-900 font-semibold capitalize`}
+                        >
+                          {value.name}
+                        </h1>
+                      </div>
+                      <h1
+                        className={`text-sm text-left ml-2 mt-2 text-azure-radiance-950`}
+                      >
+                        {value.discount > 0 ? (
+                          // ...............................................
+                          <span className={` text-base`}>
+                            <span className=" text-azure-radiance-950 text-base font-semibold">
+                              Price ${value.discount}
+                            </span>
+                            <span>
+                              <span className="line-through font-bold text-red-500  ml-1">
+                                ${value.price}
+                              </span>
+                            </span>
                           </span>
-                        </span>
-                        <span className={`font-bold capitalize text-green-500`}>
-                          discount %
-                          {discountPercent(value.discount / value.price)}
-                        </span>
-                        <span className="font-medium text-azure-radiance-950">
-                          New Price $ {value.discount}
-                        </span>
-                      </span>
-                    ) : (
-                      <span className="">Price ${value.price}</span>
-                    )}
-                  </h1>
-                  <div className={`flex justify-center text-yellow-400 mt-3`}>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star text-azure-radiance-950"></i>
-                    <i className="fa-solid fa-star text-azure-radiance-950"></i>
-                  </div>
-                  <button
-                    className={`absolute left-0 bottom-0 text-center w-[100%]
-               bg-azure-radiance-900 py-1 font-semibold text-lg capitalize text-white`}
-                  >
-                    show
-                  </button>
-                </article>
-              }
-            ></Li_nk>
-          );
-        }
-      })}
+                        ) : (
+                          // ...............................................
+                          <span
+                            className={`text-gray-800 text-base font-semibold`}
+                          >
+                            Price ${value.price}
+                          </span>
+                        )}
+                      </h1>
+                      <Rating
+                        initialRating={value.rating}
+                        lenght={value.rating.length}
+                      />
+                      <button
+                        className={`absolute left-0 bottom-0 text-center w-[100%]
+               bg-jaguar-400 hover:bg-jaguar-500 hover:bottom-[-2px] ease-in-out duration-300
+                py-1 font-semibold text-lg capitalize text-white`}
+                      >
+                        show
+                      </button>
+                    </article>
+                  }
+                ></Li_nk>
+              );
+            })}
+      </section>
     </section>
   );
 }
