@@ -1,9 +1,11 @@
 import { api } from "./api";
+// import objectToQuery from "object-to-querystring";
 
 const order = api.injectEndpoints({
   endpoints: (builder) => ({
     getItems: builder.query({
-      query: () => "order",
+      // query: (data) => `items?${objectToQuery(data)}`,
+      query: (data) => `items`,
       providesTags: ["non_refresh"],
     }),
     // getorder: builder.query({
@@ -24,4 +26,4 @@ const order = api.injectEndpoints({
     // }),
   }),
 });
-export const {} = items;
+export const { useGet } = items;
