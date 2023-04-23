@@ -1,18 +1,6 @@
 {
   "order": [
     {
-      "status": "card",
-      "itemid": 4,
-      "custId": "yahya",
-      "id": 1
-    },
-    {
-      "status": "card",
-      "itemid": 5,
-      "custId": "yahya",
-      "id": 2
-    },
-    {
       "status": "order",
       "itemid": 6,
       "custId": "yahya",
@@ -28,7 +16,7 @@
   "websites": [
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "yahya",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -42,7 +30,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "y",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -56,7 +44,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "ya",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -70,7 +58,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "yah",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -84,7 +72,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "yahy",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -98,7 +86,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "h",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -112,7 +100,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "hi",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -126,7 +114,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "hiw",
       "password": "12345",
       "email": "",
       "phone": "+9641234567",
@@ -140,7 +128,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "hiwa",
       "password": "12345",
       "email": "yahya3@gmail.com",
       "phone": "+9641234567",
@@ -154,7 +142,7 @@
     },
     {
       "name": "Yahya Hiwa",
-      "username": null,
+      "username": "r",
       "password": "12345",
       "email": "yahya3@gmail.com",
       "phone": "+9641234567",
@@ -175,6 +163,7 @@
       "email": "4932838395",
       "price": 7041.6,
       "discount": 2487.73,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 131,
       "numbers": 94,
       "image": "https://i.etsystatic.com/7645072/r/il/423db2/1661170573/il_340x270.1661170573_cln3.jpg"
@@ -186,6 +175,7 @@
       "email": "5310873791",
       "price": 7951.3,
       "discount": 0,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 131,
       "numbers": 75,
       "image": "https://i.etsystatic.com/5129893/c/750/595/0/129/il/f94fa4/1423524434/il_340x270.1423524434_c4ig.jpg"
@@ -197,6 +187,7 @@
       "email": "4238450302",
       "price": 9557.6,
       "discount": 605.1,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 130,
       "numbers": 15,
       "image": "https://i.etsystatic.com/8042223/r/il/4a64c4/3644673681/il_340x270.3644673681_phan.jpg"
@@ -208,6 +199,7 @@
       "email": "2561438929",
       "price": 7398.8,
       "discount": 4932.49,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 130,
       "numbers": 19,
       "image": "https://i.etsystatic.com/7645072/c/807/641/105/50/il/a332e6/1279944882/il_340x270.1279944882_1axj.jpg"
@@ -219,6 +211,7 @@
       "email": "9808607756",
       "price": 1797.7,
       "discount": 591.1,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 130,
       "numbers": 66,
       "image": "https://i.etsystatic.com/8224848/r/il/8e2060/2491431500/il_340x270.2491431500_8ibe.jpg"
@@ -230,6 +223,7 @@
       "email": "3462751204",
       "price": 652.87,
       "discount": 109.09,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 132,
       "numbers": 21,
       "image": "https://i.etsystatic.com/6435597/r/il/fcf47c/432285534/il_340x270.432285534_i0gr.jpg"
@@ -241,6 +235,7 @@
       "email": "5121011288",
       "price": 5122.2,
       "discount": 2076.7,
+      "rating": [1, 3, 4, 4, 4, 5],
       "account_id": 132,
       "numbers": 36,
       "image": "https://i.etsystatic.com/7211822/r/il/e5b52f/3232099540/il_340x270.3232099540_1csy.jpg"
