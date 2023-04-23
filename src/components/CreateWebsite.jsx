@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "./Loading";
 import Button from "./Button";
 import MainNavbar from "./MainNavbar";
-import {
-  useAddWebsiteMutation,
-  useGetWebInfoQuery,
-} from "../app/api/websiteEndpoint";
+import { useSignUpMutation } from "../app/api/LoginAndSignUpEndPopiant";
 export default function CreateWebsite() {
-  const { data: webInfo, isLoading, isError } = useGetWebInfoQuery();
+  let col = "/?id=130";
   const [showPass, setShowPass] = useState(false);
   const [Webdata, setData] = useState({
     name: null,
@@ -22,7 +19,7 @@ export default function CreateWebsite() {
     image: null,
     logo: null,
   });
-  const [addWebsite] = useAddWebsiteMutation();
+  const [addWebsite] = useSignUpMutation();
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -34,6 +31,9 @@ export default function CreateWebsite() {
       });
     }
   }
+  // create a function for retrive  teestttt
+
+  ///////////////////////////////////////////
   function createAccount() {
     if (!isError) {
       if (!isLoading) {
@@ -101,25 +101,6 @@ export default function CreateWebsite() {
               />
             </div>
           </div>
-          {/* username-------------------------- */}
-          {/* <div className={`w-full md:w-[90%] mt-5 `}>
-          <h1 className={`ml-2 mb-1  text-jaguar-950`}>Username</h1>
-          <div
-            className={` border w-full h-[2.5rem] overflow-hidden 
-            rounded-[3rem] border-gray-300 
-             hover:border-jaguar-400 ease-in-out duration-[400ms] `}
-          >
-            <input
-              onKeyUp={(e) => {
-                setData({ ...Webdata, username: e.target.value });
-              }}
-              type={`text`}
-              className={`w-full p-[2px] pl-3 h-full outline-none lowercase`}
-              placeholder="username"
-              required
-            />
-          </div>
-        </div> */}
           {/* email-------------------------- */}
           <div className={`w-full md:w-[90%] mt-5 `}>
             <h1 className={`ml-2 mb-1  text-jaguar-950`}>Email</h1>
@@ -185,24 +166,6 @@ export default function CreateWebsite() {
               />
             </div>
           </div>
-          {/* categorey-------------------------- */}
-          <div className={`w-full md:w-[90%] mt-5 `}>
-            <h1 className={`ml-2 mb-1  text-jaguar-950`}>Categorey</h1>
-            <div
-              className={` border w-full h-[2.5rem] overflow-hidden 
-            rounded-[3rem] border-gray-300 
-             hover:border-jaguar-400 ease-in-out duration-[400ms] `}
-            >
-              <input
-                onKeyUp={(e) => {
-                  setData({ ...Webdata, categorey: e.target.value });
-                }}
-                type={`text`}
-                className={`w-full p-[2px] pl-3 h-full outline-none lowercase`}
-                placeholder="categorey"
-              />
-            </div>
-          </div>
           {/* addressname-------------------------- */}
           <div className={`w-full md:w-[90%] mt-5 `}>
             <h1 className={`ml-2 mb-1  text-jaguar-950`}>Address Name</h1>
@@ -255,26 +218,6 @@ export default function CreateWebsite() {
               <input
                 onChange={(e) => {
                   convertImage(e, "logo");
-                }}
-                type={`file`}
-                className={`w-full p-[2px] pl-3 pt-1 h-full outline-none lowercase text-jaguar-900 
-               hover:bg-jaguar-100 ease-in-out duration-300 `}
-              />
-            </div>
-          </div>
-          {/* image-------------------------- */}
-          <div className={`w-full md:w-[90%] mt-5 `}>
-            <h1 className={`ml-2 mb-1  text-jaguar-950`}>
-              Upload Logo for your website
-            </h1>
-            <div
-              className={` border w-full h-[2.5rem] overflow-hidden 
-            rounded-[3rem] border-gray-300 
-             `}
-            >
-              <input
-                onChange={(e) => {
-                  convertImage(e, "image");
                 }}
                 type={`file`}
                 className={`w-full p-[2px] pl-3 pt-1 h-full outline-none lowercase text-jaguar-900 
