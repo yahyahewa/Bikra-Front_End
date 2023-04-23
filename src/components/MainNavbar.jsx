@@ -8,7 +8,9 @@ import "./components.css";
 import Li_nk from "./Li_nk";
 function Test() {
   const isDark = useSelector((state) => state.theme.value);
+  const showSginUp = useSelector((state) => state.user.value);
   const [isOpen, setISOpen] = useState(false);
+
   const dispatch = useDispatch();
   function handlClick() {
     if (!isDark) {
@@ -77,16 +79,20 @@ function Test() {
           >
             <i className="fa-regular fa-circle-xmark fa-2xl "></i>
           </button>
-          <h1
-            className={`rounded-[3rem] h-[3rem] border-[2px]  
+          {showSginUp ? (
+            ``
+          ) : (
+            <h1
+              className={`rounded-[3rem] h-[3rem] border-[2px]  
              overflow-hidden items-center flex px-4 mt-4 lg:mt-0
            text-oasis-950 font-semibold hover:bg-jaguar-500 ease-in-out duration-300
            ${
              isDark ? `bg-jaguar-400  text-white` : `bg-jaguar-400  text-white`
            }`}
-          >
-            <Link to={`/signup`}>Create a Website</Link>
-          </h1>
+            >
+              <Link to={`/signup`}>Create a Shop</Link>
+            </h1>
+          )}
           <h1
             className={`rounded-[3rem] border-[2px]  h-[3rem] overflow-hidden items-center flex px-4
            text-black font-semibold ease-in-out duration-300
@@ -96,7 +102,7 @@ function Test() {
                  : ` hover:bg-jaguar-100`
              }`}
           >
-            <Link to={`/login/username`}>Login</Link>
+            <Link to={`/login`}>{showSginUp ? `My Shop` : `Login`}</Link>
           </h1>
           <h1
             className={`rounded-[3rem] h-[3rem] overflow-hidden items-center flex px-4
@@ -140,9 +146,12 @@ function Test() {
            }`}
           >
             {isDark ? (
-              <i className=" fa-regular shadow-2xl fa-moon rotate-9 ease-in-out duration-1000"></i>
+              <i className=" fa-solid shadow-2xl fa-moon  ease-in-out duration-500"></i>
             ) : (
-              <i className="fa-sharp  fa-regular bg-jaguar-00 shadow-2xl shadow-yellow-500 p-3 text-yellow-500 fa-sun rotate-[360deg] ease-in-out duration-1000"></i>
+              <i
+                className="fa-solid fa-circle bg-jaguar-00 shadow-2xl
+               shadow-yellow-500 p-3 text-yellow-500   ease-in-out duration-500 "
+              ></i>
             )}
           </button>
         </div>
@@ -152,7 +161,7 @@ function Test() {
           }}
           className={`lg:hidden 
           ease-in-out duration-500 ${
-            isDark ? `text-orange-50` : `text-oasis-950`
+            isDark ? `text-orange-50` : `text-jaguar-500`
           } ${isOpen ? `rotate-360` : `rotate-0`}`}
         >
           <i className="fa-solid fa-bars fa-2xl"></i>
