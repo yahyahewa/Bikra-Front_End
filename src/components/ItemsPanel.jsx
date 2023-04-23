@@ -6,7 +6,7 @@ import Rating from "./Rating";
 import { useGetSomeItemForHomeQuery } from "../app/api/productEndPoint";
 function Items(props) {
   const { data, isLoading, isError } = useGetSomeItemForHomeQuery();
-
+  console.log(data);
   function discountPercent(value) {
     value = String(100 - value * 100);
     return value.slice(0, 2);
