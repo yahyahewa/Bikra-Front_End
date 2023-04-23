@@ -7,7 +7,7 @@ import {
   useGetSingleItemQuery,
   useAddToCartMutation,
   useGetorderQuery,
-} from "../app/api/itemEndpoints";
+} from "../app/api/itemEndpoints_";
 import { useSelector } from "react-redux";
 import Button from "./Button";
 function SingleItem() {
@@ -55,6 +55,7 @@ function SingleItem() {
     isLoading: itemsLoding,
     isError,
   } = useGetSingleItemQuery(id);
+
   function discountPercent(value) {
     value = String(100 - value * 100);
     return value.slice(0, 2);
