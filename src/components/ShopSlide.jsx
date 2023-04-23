@@ -1,33 +1,43 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./components.css";
-import { useGetItemsQuery } from "../app/api/itemEndpoints";
+import { useRetriveAccountInfoQuery } from "../app/api/shopEndpoint";
 import { useSelector } from "react-redux";
-import { parse } from "postcss";
 function ShopSlide() {
-  const { data, isLoading, isError } = useGetAllItemsQuery();
+  const { data, isLoading, isError } = useRetriveAccountInfoQuery();
+
   const [slideIndex, setSlideIndex] = useState(0);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const isDark = useSelector((state) => state.theme.value);
+  let sellrAccData = [];
+  isError
+    ? ``
+    : isLoading
+    ? ``
+    : data
+    ? (sellrAccData = data.map((value) => {
+        sellrAccData.push(value);
+      }))
+    : ``;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (!isTimerPaused && data !== "undefined") {
-        if (data.length) {
+      if (!isTimerPaused) {
+        if (sellrAccData.length > 0) {
         }
-        // setSlideIndex(
-        //   (prevIndex) =>
-        //     (prevIndex + 1) % Math.ceil(data.length / getItemsPerSlide())
-        // );
+        setSlideIndex(
+          (prevIndex) =>
+            (prevIndex + 1) %
+            Math.ceil(sellrAccData.length / getItemsPerSlide())
+        );
       }
     }, 4000);
     return () => clearInterval(timer);
   }, [isTimerPaused]);
-  // isTimerPaused;
   const handlePrevSlideClick = () => {
     setSlideIndex((prevIndex) =>
       prevIndex === 0
-        ? Math.ceil(data.length / getItemsPerSlide()) - 1
+        ? Math.ceil(sellrAccData.length / getItemsPerSlide()) - 1
         : prevIndex - 1
     );
   };
@@ -35,7 +45,7 @@ function ShopSlide() {
   const handleNextSlideClick = () => {
     setSlideIndex(
       (prevIndex) =>
-        (prevIndex + 1) % Math.ceil(data.length / getItemsPerSlide())
+        (prevIndex + 1) % Math.ceil(sellrAccData.length / getItemsPerSlide())
     );
   };
 
@@ -73,7 +83,7 @@ function ShopSlide() {
           w-[140px] h-[200px]  p-1 `}
             >
               <img
-                src={value.image ? value.image[0] : ""}
+                src={value.image ? value.image : ""}
                 className={`w-[110px]
              shadow-lg h-[110px] m-auto overflow-hidden rounded-full object-cover hover:scale-105 ease-in-out duration-300 `}
               />
