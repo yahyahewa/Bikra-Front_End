@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
-import Loading from "./Loading";
-import Button from "./Button";
 import MainNavbr from "./MainNavbar";
 import { useSignUpMutation } from "../app/api/LoginAndSignUpEndPopiant";
 import signupLogo from "../assets/images/undraw_sign_up_n6im.svg";
-import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { userData } from "../Slice/userslice";
+import { Navigate } from "react-router-dom";
 export default function CreateWebsite() {
+  const dispatch = useDispatch();
   const [showPass, setShowPass] = useState(false);
-  const [Webdata, setData] = useState({
+  const [formData, setFormData] = useState({
     email: null,
     password: null,
   });
   const [createAccount, { data, isError, isLoading }] = useSignUpMutation();
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setData({
-          ...Webdata,
-          lati: position.coords.latitude,
-          long: position.coords.longitude,
-        });
-      });
-    }
-  }
-  //------------------------------------------
+
+  const userdata = useSelector((state) => state.user);
+  const click = () => {};
+  useEffect(() => {
+    console.log(data?.data.token);
+    localStorage.setItem("user_token", data?.data.token);
+    dispatch(userData(data?.data.data));
+  }, [data]);
   const handlData = (e) => {
-    setData({ ...Webdata, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  if (userdata.user) return <Navigate to="/account" />;
+
   return (
     <section>
       <MainNavbr />
@@ -34,6 +33,9 @@ export default function CreateWebsite() {
         className={`text-center my-10 text-xl md:text-3xl text-jaguar-500 font-semibold`}
       >
         Create a Free Online Shop For Your Business
+        <span className={`text-sm text-slate-800 mt-2 block`}>
+          you can buy and sales from this account
+        </span>
       </h1>
       <section
         className={`w-[95%] md:w-[90%] m-auto  flex flex-col md:flex-row 
@@ -91,10 +93,9 @@ export default function CreateWebsite() {
           </div>
           <div className={`w-full mt-6`}>
             <button
-              onSubmit={() => {
-                if (Webdata.email && Webdata.password) {
-                  createAccount(Webdata);
-                }
+              type="submit"
+              onClick={() => {
+                createAccount(formData);
               }}
               className={`w-full border-none block h-[3rem] bg-jaguar-400 
               font-semibold rounded-[3rem] text-jaguar-50 hover:bg-jaguar-500 
