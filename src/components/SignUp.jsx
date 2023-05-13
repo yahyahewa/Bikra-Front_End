@@ -15,9 +15,7 @@ export default function CreateWebsite() {
   const [createAccount, { data, isError, isLoading }] = useSignUpMutation();
 
   const userdata = useSelector((state) => state.user);
-  const click = () => {};
   useEffect(() => {
-    console.log(data?.data.token);
     localStorage.setItem("user_token", data?.data.token);
     dispatch(userData(data?.data.data));
   }, [data]);
