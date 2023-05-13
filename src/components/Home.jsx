@@ -16,8 +16,6 @@ function Home() {
       }  ease-in-out duration-150`}
     >
       <MainNavbar />
-      <ShopSlide />
-      {/* <Account /> */}
       <ItemsPanel
         text={`Items`}
         class={`absolute left-1 text-lg font-semibold border-b text-azure-radiance-800 border-azure-radiance-800`}
