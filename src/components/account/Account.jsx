@@ -4,7 +4,18 @@ import ProductPanel from "./ProductPanel";
 import AddProduct from "./AddProduct";
 import OrderPanel from "./OrderPanel";
 import SettingAccount from "./SettingAccount";
+import MainNavbar from "../MainNavbar";
+import { useGetUserInformationQuery } from "../../app/api/LoginAndSignUpEndPopiant";
+import { Navigate } from "react-router-dom";
+import AdminPanel from "./AccSetting/AdminPanel";
+import Categorey from "./AccSetting/Categorey";
+import Loading from "../Loading";
+import { useEffect } from "react";
 function SellerAccount() {
+  const { data, isError, isLoading } = useGetUserInformationQuery();
+  // useEffect(() => {
+
+  // }, [data]);
   const [panel, setPanel] = useState(<ProductPanel />);
   const WichPanel = (e) => {
     switch (e) {
@@ -20,17 +31,32 @@ function SellerAccount() {
       case "setting":
         setPanel(<SettingAccount />);
         break;
+      case "shopsInformation":
+        setPanel(<AdminPanel />);
+        break;
+      case "categorey":
+        setPanel(<Categorey />);
+        break;
       default:
         setPanel(<ProductPanel />);
         break;
     }
   };
-  return (
-    <section className={`flex justify-start items-start w-full`}>
-      <Aside selectedPanel={WichPanel} />
-      {panel}
-    </section>
-  );
+  if (!isLoading) {
+    if (data?.data.email) {
+      return (
+        <main>
+          <MainNavbar />
+          <section className={`flex justify-start items-start w-full`}>
+            <Aside selectedPanel={WichPanel} />
+            {panel}
+          </section>
+        </main>
+      );
+    } else {
+      return <Navigate to="/login" />;
+    }
+  }
 }
 
 export default SellerAccount;
