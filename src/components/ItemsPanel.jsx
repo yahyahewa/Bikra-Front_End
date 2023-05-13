@@ -5,8 +5,9 @@ import Li_nk from "./Li_nk";
 import Rating from "./Rating";
 import { useGetSomeItemForHomeQuery } from "../app/api/productEndPoint";
 function Items(props) {
-  const { data, isLoading, isError } = useGetSomeItemForHomeQuery();
-  console.log(data);
+  const limit = { limit: 6 };
+  const { data, isLoading, isError } = useGetSomeItemForHomeQuery(limit);
+
   function discountPercent(value) {
     value = String(100 - value * 100);
     return value.slice(0, 2);
@@ -26,12 +27,12 @@ function Items(props) {
           ? ``
           : isLoading
           ? ``
-          : data.map((value) => {
+          : data.data?.map((value) => {
               return (
                 <Li_nk
                   isScrollTop={true}
-                  key={value.id}
-                  url={`/singleitem/${value.id}`}
+                  key={value._id}
+                  url={`/singleitem/${value._id}`}
                   cssStyle={`overflow-hidden rounded-xl w-[90%] sm:w-[45%] lg:w-[30%] xl:w-[23%]
             h-[330px] relative  mt-4 hover:mt-[10px] hover:shadow-xl ease-out duration-300 `}
                   content={
@@ -42,7 +43,7 @@ function Items(props) {
                       >
                         <img
                           className={`w-full h-full object-cover`}
-                          src={value.image}
+                          src={`http://localhost:4000/uploads/image/${value.image}`}
                         />
 
                         <span
