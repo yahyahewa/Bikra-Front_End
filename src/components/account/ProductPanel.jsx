@@ -1,51 +1,22 @@
-import React from "react";
-import { useGetItemsQuery } from "../../app/api/productEndPoint";
+import React, { useState, useEffect } from "react";
+import { useGetProductOfUsersQuery } from "../../app/api/productEndPoint";
 import Card from "./Card";
+import Loading from "../Loading";
+import { useSelector } from "react-redux";
 function ProductPanel() {
-  // const { data, error, isLoading } = useGetItemsQuery();
+  const [userId, setUserId] = useState();
+  const user = useSelector((state) => state.user.user);
 
-  const data = [
-    {
-      id: 1,
-      name: "product1",
-      price: 100,
-      discount: 50,
-      image: "https://picsum.photos/200/300",
-      rating: [0, 0, 0, 1, 5],
-      desc: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.",
-    },
-    {
-      id: 2,
-      name: "product1",
-      price: 100,
-      discount: 0,
-      image: "https://picsum.photos/200/300",
-      rating: [1, 2, 3, 4, 5],
-      desc: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.",
-    },
-    {
-      id: 3,
-      name: "product1",
-      price: 100,
-      discount: 50,
-      image: "https://picsum.photos/200/300",
-      rating: [1, 2, 3, 4, 5],
-      desc: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.",
-    },
-    {
-      id: 4,
-      name: "product1",
-      price: 100,
-      discount: 50,
-      image: "https://picsum.photos/200/300",
-      rating: [1, 2, 3, 4, 5],
-      desc: "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.",
-    },
-  ];
+  useEffect(() => {
+    setUserId(user?._id);
+  }, [user]);
+  // setUserId({ _id: user?._id });
+  const { data, isError, isLoading } = useGetProductOfUsersQuery(userId);
+  // const data = [];
   return (
     <div className="w-full">
       <div className={`w-full`}></div>
-      <Card data={data} />
+      {isError ? `` : isLoading ? <Loading /> : <Card data={data?.data} />}
     </div>
   );
 }
