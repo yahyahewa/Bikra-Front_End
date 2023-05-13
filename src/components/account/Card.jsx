@@ -18,18 +18,16 @@ function Card({ data }) {
     return value.slice(0, 2);
   }
   return (
-    <section
-      className={`border w-full flex flex-wrap gap-2 p-2 justify-center `}
-    >
+    <section className={` w-full flex flex-wrap gap-2 p-2 justify-center `}>
       {data?.map((value) => {
         return (
           <div
-            key={value.id}
+            key={value._id}
             className={`flex flex-col  w-full sm:w-[45%] md:w-[45%] lg:w-[30%]
                     xl:w-[23%]
                     rounded-xl border relative overflow-hidden`}
           >
-            {/* imgae ----------------------- image */}
+            {/* --------------------imgae -----------------------  */}
             <div className={`w-[100%]  border-b relative`}>
               <img
                 src={value.image}
@@ -68,7 +66,7 @@ function Card({ data }) {
                   )}
                 </div>
                 <h1 className={`text-sm px-2 py-1`}>
-                  {readMore(value.desc)} ....
+                  {readMore(value.description)} ....
                 </h1>
                 <Rating
                   initialRating={value.rating}
