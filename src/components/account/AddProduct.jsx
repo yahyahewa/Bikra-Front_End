@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useGetCategoreyQuery } from "../../app/api/categorey.endpoint";
-import { useAddProductMutation } from "../../app/api/productEndPoint";
+import {
+  useAddProductMutation,
+  useUploadImageMutation,
+} from "../../app/api/productEndPoint";
+import { useSelector } from "react-redux";
 function AddProduct() {
-  const [image, setImage] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
   const { data, isError, isLoading } = useGetCategoreyQuery();
+  const userData = useSelector((state) => state.user.user);
+  const [uploadImage, { data: UploadImage }] = useUploadImageMutation();
   const [productData, setproductData] = useState({
     name: "",
-    image: "",
+    image: null,
     price: null,
     discount: 0,
     description: "",
-    category: "",
-    owner: "6447a2e5b26986371991fd05",
+    owner: userData?._id,
     quantity: 1,
+    category: "",
   });
   let options;
-
+  //----------------- adding product-------------------------///
+  useEffect(() => {
+    if (UploadImage?.status === "success") {
+      setproductData({ ...productData, image: UploadImage?.data });
+    }
+  }, [UploadImage]);
   if (!isError && !isLoading) {
     options = data.data.map((value, index) => {
       return (
@@ -46,28 +55,42 @@ function AddProduct() {
   };
   return (
     <section className="w-full">
-      <div className="w-full flex justify-center items-center mt-6">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addProduct(productData);
+        }}
+        className="w-full flex justify-center items-center mt-6"
+      >
         <div className="w-[90%] sm:w-1/2 flex flex-col justify-center items-center">
           <h1 className="text-2xl font-bold text-slate-700">Add Product</h1>
-          {/* ----------------------Name------------------------------------ */}
+          {/* -------------------------Name------------------------------------ */}
           <div className="w-full flex flex-col justify-center items-center mt-4">
             <h1 className="text- font-bold text-slate-700">Product Name</h1>
             <input
               onChange={handldata}
               type="text"
               name="name"
-              className="w-full border-[2px] py-1 pl-2 rounded-xl border- outline-none "
+              className="w-full border-[2px] py-1 pl-2 rounded-xl  outline-none "
             />
           </div>
           {/* ----------------------Image------------------------------------ */}
           <div className="w-full flex flex-col justify-center items-center mt-4">
             <h1 className="text- font-bold text-slate-700">Product Image</h1>
             <div className="w-full h-[250px] rounded-2xl overflow-hidden border mb-2 object-cover">
-              <img src={productData.image} className={`w-full h-full`} alt="" />
+              <img
+                src={`http://localhost:4000/uploads/image/${
+                  productData.image && productData.image
+                }`}
+                className={`w-full h-full`}
+                alt=""
+              />
             </div>
             <input
               type="file"
-              onChange={handldata}
+              onChange={(e) => {
+                uploadImage(e.target.files);
+              }}
               name="image"
               className="w-full border-[2px] py-1 pl-2 rounded-xl border- outline-none "
             />
@@ -133,13 +156,14 @@ function AddProduct() {
             />
           </div>
           <button
+            type="submit"
             className="w-full h-10 bg-jaguar-400 mt-2 hover:bg-jaguar-500
            ease-in-out duration-300 text-white rounded-xl"
           >
             Add Product
           </button>
         </div>
-      </div>
+      </form>
     </section>
   );
 }
