@@ -1,7 +1,65 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useGetUserInformationQuery } from "../../app/api/LoginAndSignUpEndPopiant";
+import { useSelector, useDispatch } from "react-redux";
+import { userData } from "../../Slice/userSlice";
 function Aside({ selectedPanel }) {
   const [openSetting, setOpenSetting] = useState(false);
+  function logout() {
+    localStorage.removeItem("user_token");
+    window.location.reload();
+  }
+  const [adminPanels, setAdminPanels] = useState({
+    shopsInformation: "",
+    categorey: "",
+    adminPanels: "",
+  });
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { data, isError, isLoading } = useGetUserInformationQuery();
+  useEffect(() => {
+    if (!isError && !isLoading) {
+      dispatch(userData(data?.data));
+    }
+  }, [data]);
+  useEffect(() => {
+    if (data.data?.role === "admin") {
+      setAdminPanels({
+        categorey: (
+          <input
+            type="button"
+            className={`border text-center rounded-xl px-4 py-1 w-[90%]  hover:bg-azure-radiance-900
+             mt-1 hover:scale-[0.99] ease-in-out duration-300`}
+            value="Categorey"
+            onClick={() => {
+              selectedPanel("categorey");
+            }}
+          />
+        ),
+        shopsInformation: (
+          <input
+            type="button"
+            className={`border text-center rounded-xl px-4 py-1 w-[90%]  hover:bg-azure-radiance-900
+             mt-1 hover:scale-[0.99] ease-in-out duration-300`}
+            value="shops"
+            onClick={() => {
+              selectedPanel("shopsInformation");
+            }}
+          />
+        ),
+        adminPanels: (
+          <input
+            type="button"
+            className={`border text-center rounded-xl px-4 py-1 w-[90%]  hover:bg-azure-radiance-900
+             mt-1 hover:scale-[0.99] ease-in-out duration-300`}
+            value="Admin"
+            onClick={() => {
+              selectedPanel("adminPanels");
+            }}
+          />
+        ),
+      });
+    }
+  }, [user]);
   return (
     <aside
       className={` text-white bg-gray-900  w-[250px] 
@@ -68,6 +126,18 @@ function Aside({ selectedPanel }) {
             selectedPanel("setting");
           }}
         />
+        <input
+          type="button"
+          className={`border text-center rounded-xl px-4 py-1 w-[90%]  hover:bg-azure-radiance-900
+             mt-1 hover:scale-[0.99] ease-in-out duration-300`}
+          value="Logout"
+          onClick={() => {
+            logout();
+          }}
+        />
+        {adminPanels.categorey}
+        {adminPanels.adminPanels}
+        {adminPanels.shopsInformation}
       </div>
     </aside>
   );
