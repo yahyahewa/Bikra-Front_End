@@ -7,7 +7,7 @@ function ConfigerAccount() {
     username: "",
     email: "",
   });
-  const [isShow, setShow] = useState([false, false, true]);
+  const [isShow, setShow] = useState([false, false, false]);
   function openPanel(index) {
     const updatedShow = isShow.map((value, i) => {
       if (i === index) {
