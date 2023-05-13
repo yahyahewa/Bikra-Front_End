@@ -6,24 +6,62 @@ const order = api.injectEndpoints({
     getItems: builder.query({
       // query: (data) => `items?${objectToQuery(data)}`,
       query: (data) => `items`,
-      providesTags: ["non_refresh"],
     }),
-    // getorder: builder.query({
-    //   query: () => "order",
-    //   providesTags: ["non_refresh"],
-    // }),
-    // getSingleItem: builder.query({
-    //   query: (id) => `items?id=${id}`,
-    //   providesTags: ["non_refresh"],
-    // }),
-    // addToCart: builder.mutation({
-    //   query: (ItemData) => ({
-    //     url: "order",
-    //     method: "POST",
-    //     body: ItemData,
-    //   }),
-    //   invalidatesTags: ["non_refresh"],
-    // }),
+    addToCart: builder.mutation({
+      query: (ItemData) => ({
+        url: "order/",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+        method: "POST",
+        body: ItemData,
+      }),
+    }),
+    // retriver order items
+    GetItemOrder: builder.query({
+      query: (id) => ({
+        url: `order/${id}`,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+      }),
+    }),
+    // delete order item
+    deleteOrderItem: builder.mutation({
+      query: (id) => ({
+        url: `order/${id}`,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+        method: "DELETE",
+      }),
+    }),
+    Checkout: builder.mutation({
+      query: (data) => ({
+        url: `order/`,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    // retrive order items into account
+    getRetriveOrder: builder.query({
+      query: (id) => ({
+        url: `order/order/${id}`,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user_token")}`,
+        },
+      }),
+    }),
   }),
 });
-export const { useGet } = items;
+
+export const {
+  useGetRetriveOrderQuery,
+  useGetItemOrderQuery,
+  useDeleteOrderItemMutation,
+  useAddToCartMutation,
+  useCheckoutMutation,
+} = order;
