@@ -31,7 +31,6 @@ function ItemPage({ scrol }) {
     isError: isUSerError,
     isLoading: isUserLoading,
   } = useGetUserInformationQuery();
-  console.log();
   useEffect(() => {
     if (!isUSerError && !isUserLoading) {
       dispatch(userData(userInformation?.data));

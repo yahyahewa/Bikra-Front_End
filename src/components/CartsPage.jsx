@@ -35,32 +35,13 @@ function AddToCart() {
     long: null,
     lati: null,
   });
-  let basketData = [];
   const {
     data: itemList,
     isError: itemError,
     isLoading: itemLoading,
   } = useGetItemOrderQuery(UserVal);
 
-  useEffect(() => {
-    if (!itemError && !itemLoading) {
-      itemList?.data.map((value) => {
-        value.product.map((item) => {
-          basketData.push({
-            _id: item._id,
-            name: item.name,
-            price: item.price,
-            image: item.image,
-            quantity: item.quantity,
-            discount: item.discount,
-            description: item.description,
-            owner: item.owner,
-            category: item.category,
-          });
-        });
-      });
-    }
-  }, [itemList]);
+  
   // chekout ------------- chekout-----//
   function handleCheckout() {
     if (userId) {
