@@ -6,7 +6,7 @@ import Loding from "./Loading";
 import { Link, useParams } from "react-router-dom";
 import Footer from "./Footer";
 import Pagination from "./Pagination";
-import { userData } from "../Slice/userSlice";
+import { userData } from "../Slice/userslice.js";
 import { useGetSomeItemForHomeQuery } from "../app/api/productEndPoint";
 import { useAddToCartMutation } from "../app/api/orderEndpoint";
 import { useGetUserInformationQuery } from "../app/api/LoginAndSignUpEndPopiant";
