@@ -24,7 +24,7 @@ function OrderPanel() {
                 {/* --------------------imgae -----------------------  */}
                 <div className={`w-[100%]  border-b relative`}>
                   <img
-                    src={`http://localhost:4000/uploads/image/${value.image}`}
+                    src={`${import.meta.env.VITE_BACK_END}${value.image}`}
                     className={`w-full h-[180px] object-cover`}
                   />
                   {value.discount > 0 ? (

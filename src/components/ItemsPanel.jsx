@@ -43,7 +43,9 @@ function Items(props) {
                       >
                         <img
                           className={`w-full h-full object-cover`}
-                          src={`http://localhost:4000/uploads/image/${value.image}`}
+                          src={`${import.meta.env.VITE_BACK_END}uploads/image/${
+                            value.image
+                          }`}
                         />
 
                         <span

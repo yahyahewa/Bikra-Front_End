@@ -79,7 +79,7 @@ function AddProduct() {
             <h1 className="text- font-bold text-slate-700">Product Image</h1>
             <div className="w-full h-[250px] rounded-2xl overflow-hidden border mb-2 object-cover">
               <img
-                src={`http://localhost:4000/uploads/image/${
+                src={`${import.meta.env.VITE_BACK_END}uploads/image/${
                   productData.image && productData.image
                 }`}
                 className={`w-full h-full`}
