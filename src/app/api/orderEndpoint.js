@@ -29,7 +29,7 @@ const order = api.injectEndpoints({
     // delete order item
     deleteOrderItem: builder.mutation({
       query: (id) => ({
-        url: `order/${id}`,
+        url: `api/order/${id}`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
@@ -38,7 +38,7 @@ const order = api.injectEndpoints({
     }),
     Checkout: builder.mutation({
       query: (data) => ({
-        url: `order/`,
+        url: `api/order/`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
@@ -49,7 +49,7 @@ const order = api.injectEndpoints({
     // retrive order items into account
     getRetriveOrder: builder.query({
       query: (id) => ({
-        url: `order/order/${id}`,
+        url: `api/order/order/${id}`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },

@@ -4,7 +4,7 @@ const product = api.injectEndpoints({
   endpoints: (builder) => ({
     getProductOfUsers: builder.query({
       query: (id) => ({
-        url: `products/user/${id}`,
+        url: `api/products/user/${id}`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
@@ -14,7 +14,7 @@ const product = api.injectEndpoints({
     // order item
     orderItem: builder.mutation({
       query: (data) => ({
-        url: `/orders/`,
+        url: `api/orders/`,
         method: "PATCH",
         body: data,
         invalidatesTags: ["non_refresh"],
@@ -23,7 +23,7 @@ const product = api.injectEndpoints({
     // retrive some item for home page
     getSomeItemForHome: builder.query({
       query: (data) =>
-        `/products?page=${data.page && data.page}&limit=${
+        `api/products?page=${data.page && data.page}&limit=${
           data.limit && data.limit
         }&search=${data.search && data.search}&category=${
           data.category && data.category
@@ -32,13 +32,13 @@ const product = api.injectEndpoints({
     }),
     // retrive one item for single page
     getOneItemSinglePage: builder.query({
-      query: (id) => `/products/${id}`,
+      query: (id) => `api/products/${id}`,
       providesTags: ["non_refresh"],
     }),
     // add product
     addProduct: builder.mutation({
       query: (data) => ({
-        url: `/products/`,
+        url: `api/products/`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
@@ -48,7 +48,7 @@ const product = api.injectEndpoints({
       }),
     }),
     retriveOrder: builder.query({
-      query: () => `/orders/`,
+      query: () => `api/orders/`,
       providesTags: ["non_refresh"],
     }),
     //upload image

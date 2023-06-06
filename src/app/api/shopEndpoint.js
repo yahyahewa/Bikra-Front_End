@@ -5,13 +5,13 @@ const website = api.injectEndpoints({
     // retrive seller acount information
     //like login ,username , configration and product ......
     retriveAccountInfo: builder.query({
-      query: () => `websites`,
+      query: () => `api/websites`,
       providesTags: ["non_refresh"],
     }),
     // create account , add item and another
     createAccount: builder.mutation({
       query: (collection, data) => ({
-        url: `${collection}`,
+        url: `api/${collection}`,
         method: "POST",
         body: data,
       }),
