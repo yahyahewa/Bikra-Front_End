@@ -9,7 +9,7 @@ import {
 } from "../app/api/orderEndpoint";
 import { useGetUserInformationQuery } from "../app/api/LoginAndSignUpEndPopiant";
 import { useSelector, useDispatch } from "react-redux";
-import { userData } from "../Slice/userSlice";
+import { userData } from "../Slice/userslice";
 function AddToCart() {
   const userId = useSelector((state) => state.user.user?._id);
   const [UserVal, setUserVal] = useState();
@@ -41,7 +41,6 @@ function AddToCart() {
     isLoading: itemLoading,
   } = useGetItemOrderQuery(UserVal);
 
-  
   // chekout ------------- chekout-----//
   function handleCheckout() {
     if (userId) {
