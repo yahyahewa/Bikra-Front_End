@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useGetUserInformationQuery } from "../../app/api/LoginAndSignUpEndPopiant";
 import { useSelector, useDispatch } from "react-redux";
-import { userData } from "../../Slice/userSlice";
+import { userData } from "../../Slice/userslice";
 function Aside({ selectedPanel }) {
   const [openSetting, setOpenSetting] = useState(false);
   function logout() {
