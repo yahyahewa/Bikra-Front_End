@@ -6,7 +6,7 @@ import { useAddToCartMutation } from "../app/api/orderEndpoint";
 import { useGetOneItemSinglePageQuery } from "../app/api/productEndPoint";
 import { useGetUserInformationQuery } from "../app/api/LoginAndSignUpEndPopiant";
 import { useDispatch, useSelector } from "react-redux";
-import { userData } from "../Slice/userSlice";
+import { userData } from "../Slice/userslice";
 
 function SingleItem() {
   const { id } = useParams();
