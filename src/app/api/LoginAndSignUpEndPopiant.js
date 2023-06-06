@@ -3,7 +3,7 @@ const userAccount = api.injectEndpoints({
   endpoints: (builder) => ({
     Login: builder.mutation({
       query: (data) => ({
-        url: `users/login`,
+        url: `api/users/login`,
         method: "POST",
         body: data,
       }),
@@ -11,7 +11,7 @@ const userAccount = api.injectEndpoints({
     }),
     SignUp: builder.mutation({
       query: (data) => ({
-        url: `users/signup`,
+        url: `api/users/signup`,
         method: "POST",
         body: data,
       }),
@@ -19,7 +19,7 @@ const userAccount = api.injectEndpoints({
     }),
     getUserData: builder.query({
       query: (token) => ({
-        url: `users/profile`,
+        url: `api/users/profile`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -28,7 +28,7 @@ const userAccount = api.injectEndpoints({
     // retrive user information with token
     getUserInformation: builder.query({
       query: () => ({
-        url: `users/login`,
+        url: `api/users/login`,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user_token")}`,
         },
