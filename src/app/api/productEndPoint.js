@@ -57,7 +57,7 @@ const product = api.injectEndpoints({
         const formData = new FormData();
         formData.append("photo", file[0]);
         return {
-          url: `uploads/`,
+          url: `api/products/upload`,
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user_token")}`,
           },
