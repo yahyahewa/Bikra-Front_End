@@ -67,7 +67,7 @@ function SingleItem() {
               <div className={`w-full md:w-[50%] h-[250px] `}>
                 <img
                   src={`${import.meta.env.VITE_BACK_END}uploads/image/${
-                    value.image
+                    data.data.image
                   }`}
                   className={`w-full h-full object-contain`}
                 />
