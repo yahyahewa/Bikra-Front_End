@@ -2,25 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useUploadImageMutation } from "../../../app/api/productEndPoint";
 import { useAddCategoreyMutation } from "../../../app/api/categorey.endpoint";
 function Categorey() {
-  const [uploadImage, { data: UploadImage }] = useUploadImageMutation();
-
+  // const [uploadImage, { data: UploadImage }] = useUploadImageMutation();
   const [formData, setFormData] = useState({
     name: "",
-    image: null,
+    imgae: null,
   });
   const [addCategorey, { data: CategoreyData }] = useAddCategoreyMutation();
-  useEffect(() => {
-    if (UploadImage?.status === "success") {
-      setFormData({ ...formData, image: UploadImage?.data });
-    }
-  }, [UploadImage]);
+  // useEffect(() => {
+  //   if (UploadImage?.status === "success") {
+  //     setFormData({ ...formData, image: UploadImage?.data });
+  //   }
+  // }, [UploadImage]);
   const handelChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handelSubmit = (e) => {
     e.preventDefault();
-    addCategorey(formData);
-    setFormData({ name: "", image: null });
+    if (formData.imgae) {
+      addCategorey(formData);
+    }
   };
   return (
     <form
@@ -42,18 +42,25 @@ function Categorey() {
       <div className="w-full flex flex-col justify-center items-center mt-4">
         <h1 className="text- font-bold text-slate-700">Categorey Image</h1>
         <div className="w-full h-[250px] rounded-2xl overflow-hidden border mb-2 object-cover">
-          <img
-            src={`http://localhost:4000/uploads/image/${formData.image}`}
-            className={`w-full h-full`}
-            alt=""
-          />
+          <img src={formData.imgae} className={`w-full h-full`} alt="" />
         </div>
         <input
           type="file"
           onChange={(e) => {
-            uploadImage(e.target.files);
+            const file = e.target.files[0];
+
+            const reader = new FileReader();
+
+            reader.onloadend = function () {
+              const base64Image = reader.result;
+              if (base64Image) {
+                setFormData({ ...formData, [e.target.name]: base64Image });
+              }
+            };
+
+            reader.readAsDataURL(file);
           }}
-          name="image"
+          name="imgae"
           className="w-full border-[2px] py-1 pl-2 rounded-xl border- outline-none "
         />
       </div>

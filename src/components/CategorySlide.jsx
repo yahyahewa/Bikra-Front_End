@@ -44,7 +44,7 @@ function CategorySlide() {
                 <img
                   className={` rounded w-[120px] h-[140px] sm:w-[140px] sm:h-[150px]
                   md:w-[190px] lg:w-[250px]  object-cover`}
-                  src={`http://localhost:4000/uploads/image/${value.image}`}
+                  src={value.imgae}
                 />
                 <h1
                   className={` text-xs ml-1 md:text-base underline text-azure-radiance-900 font-medium`}
