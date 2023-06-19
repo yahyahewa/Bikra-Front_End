@@ -47,7 +47,6 @@ function SingleItem() {
   function ReadMore(text) {
     return isTruncated ? text.slice(0, 100) : text;
   }
-  console.log(`localhost:5173/uploads/image/${data?.data?.image}`);
   return (
     <main>
       <MainNavbar />
@@ -67,7 +66,9 @@ function SingleItem() {
             >
               <div className={`w-full md:w-[50%] h-[250px] `}>
                 <img
-                  src={`http://localhost:4000/uploads/image/${data.data.image}`}
+                  src={`${import.meta.env.VITE_BACK_END}uploads/image/${
+                    value.image
+                  }`}
                   className={`w-full h-full object-contain`}
                 />
               </div>
