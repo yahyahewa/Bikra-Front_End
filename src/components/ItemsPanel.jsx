@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./components.css";
 import Li_nk from "./Li_nk";
 import Rating from "./Rating";
+import Loding from "./Loading";
 import { useGetSomeItemForHomeQuery } from "../app/api/productEndPoint";
 function Items(props) {
   const limit = { limit: 6 };
@@ -24,9 +25,9 @@ function Items(props) {
      items-start justify-evenly relative m-auto   gap-[2px] max-w-[1500px]"
       >
         {isError
-          ? ``
+          ? <Loding/>
           : isLoading
-          ? ``
+          ? <Loding/>
           : data.data?.map((value) => {
               return (
                 <Li_nk
